@@ -44,7 +44,7 @@
                                         <a href="404.html" class="block px-4 py-2 hover:bg-gray-100">Cámaras de Seguridad</a>
                                     </li>
                                     <li>
-                                        <a href="#WEB" class="block px-4 py-2 hover:bg-gray-100">Diseños WEB</a>
+                                        <a href="#contacto" class="block px-4 py-2 hover:bg-gray-100">Diseños WEB</a>
                                     </li>
                                 </ul>
                                
@@ -57,17 +57,58 @@
                             <a href="#nosotros" class="block py-2 px-3 text-black rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Sobre Nosotros</a>
                         </li>
                         <li>
-                            <a href="404.html" class="block py-2 px-3 text-black rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Contacto</a>
+                            <a href="#contacto" class="block py-2 px-3 text-black rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Contacto</a>
                         </li>
+                        
                         <li>
-                            <a href="404.html" class="block py-2 px-3 text-black rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Blog</a>
-                        </li>
-                        <li>
-                            <a href="404.html" class="text-blue-600 hover:text-blue-800"><i class="fab fa-facebook"></i></a>
-                        </li>
-                        <li>
-                            <a href="404.html" class="text-pink-600 hover:text-pink-800"><i class="fab fa-instagram"></i></a>
-                        </li>              
+                            <a href="https://www.facebook.com/profile.php?id=61572983594359" 
+                               class="text-blue-600 hover:text-blue-800"
+                               onclick="return confirmNavigation(event)">
+                              <i class="fab fa-facebook"></i>
+                            </a>
+                          </li>
+                          
+                          <dialog id="navigationDialog" class="p-6 rounded-lg shadow-xl">
+                            <p class="mb-4">¿Estás seguro que quieres salir de esta página para visitar Facebook?</p>
+                            <div class="flex justify-end space-x-4">
+                              <button onclick="document.getElementById('navigationDialog').close()" 
+                                      class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">
+                                Cancelar
+                              </button>
+                              <button onclick="proceedNavigation()" 
+                                      class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                                Continuar
+                              </button>
+                            </div>
+                          </dialog>
+                          
+                          <script>
+                            let targetUrl = '';
+                            
+                            function confirmNavigation(event) {
+                              event.preventDefault();
+                              targetUrl = event.currentTarget.href;
+                              document.getElementById('navigationDialog').showModal();
+                              return false;
+                            }
+                            
+                            function proceedNavigation() {
+                              document.getElementById('navigationDialog').close();
+                              window.open(targetUrl, '_blank');
+                            }
+                          </script>
+                          
+                          <style>
+                            dialog::backdrop {
+                              background-color: rgba(0, 0, 0, 0.5);
+                            }
+                            dialog {
+                              border: none;
+                              width: 90%;
+                              max-width: 400px;
+                            }
+                          </style>
+                                   
                     </ul>
                 </div>
             </div>
@@ -80,241 +121,451 @@
     </video>
 
     <main>
-        <section class="bg-white bg-opacity-80 p-6 rounded-md shadow-lg mt-8 flex flex-col md:flex-row items-center">
-            <div id="nosotros"class="md:w-1/2 md:pr-4">
-                <h1 class="text-2xl font-bold text-black">Login With Technology</h1>
-                <h2 class="text-xl font-semibold mt-2">Sobre Nosotros</h2>
-                <p class="mt-2 text-gray-700">Somos una empresa dedicada a la tecnología, servicios de redes, cámaras y más.</p>
-
-                <span>Suministramos e instalamos Equipos y productos de calidad alta y marcas reconocidas con garantía </span>
+        <section class="bg-white bg-opacity-90 p-6 rounded-lg shadow-md mt-8 flex flex-col md:flex-row items-center">
+            <!-- Contenido de texto -->
+            <div class="md:w-1/2 md:pr-8 py-4">
+                <!-- Título con efecto de escritura (solo al cargar) -->
+                <div class="mb-3 h-14 flex items-center">
+                    <h1 id="typing-title" class="text-3xl md:text-4xl font-bold text-gray-800"></h1>
+                    <span id="typing-cursor" class="ml-1 h-8 w-1 bg-purple-600 animate-blink"></span>
+                </div>
                 
-                <br>
-                <span> ☢ Sistemas de audio y video para su empresa u hogar</span>
-                <br>
-                <span> ☢ Comunicación por cable e inalámbrica</span>
-                <br>
-                <span> ☢ Diseños Web y soporte Informático</span>
-                <br>
-                <br>
-                
-
+                <!-- Sobre Nosotros -->
+                <div class="flex items-center mb-6">
+                    <h2 class="text-xl md:text-2xl font-semibold text-gray-800">Sobre Nosotros</h2>
+                    <div class="ml-3 h-px flex-1 bg-gray-300"></div>
+                </div>
+            
+                <!-- Texto principal -->
+                <p class="text-gray-700 mb-6 leading-relaxed">
+                    Somos una empresa apasionada por la tecnología, especializada en 
+                    <span class="font-semibold text-blue-600">soluciones integrales</span> de redes, seguridad electrónica 
+                    y desarrollo digital.
+                </p>
+            
+                <!-- Lista de servicios simplificada -->
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 mt-1 mr-2 text-purple-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-gray-700">Suministramos e instalamos equipos de <strong class="text-gray-800">alta calidad</strong> con garantía</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 mt-1 mr-2 text-purple-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-gray-700"><strong class="text-gray-800">Sistemas AV:</strong> Audio y video profesional</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 mt-1 mr-2 text-purple-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-gray-700"><strong class="text-gray-800">Redes:</strong> Soluciones cableadas e inalámbricas</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 mt-1 mr-2 text-purple-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-gray-700"><strong class="text-gray-800">Desarrollo web</strong> y soporte técnico</span>
+                    </li>
+                </ul>
             </div>
-            <div class="md:w-1/2 mt-4 md:mt-0">
-                <img src="conectados.jpg" alt="" class="w-full h-auto max-w-xs mx-auto">
-                <a href="#contacto" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Contáctenos</a>
+        
+            <!-- Imagen y botón -->
+            <div class="md:w-1/2 mt-6 md:mt-0 text-center">
+                <img src="conectados.jpg" alt="Soluciones tecnológicas" class="w-full h-auto max-w-xs mx-auto rounded-lg shadow-sm">
+                <a href="#contacto" class="inline-block mt-6 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+                    Contáctenos
+                </a>
             </div>
         </section>
+        
+        <script>
+            // Controlador de efecto de escritura
+            class TypeWriter {
+                constructor(elementId, text, options = {}) {
+                    this.element = document.getElementById(elementId);
+                    this.text = text;
+                    this.speed = options.speed || 120;
+                    this.loopInterval = options.loopInterval || null; // en milisegundos (ej: 180000 = 3 minutos)
+                    this.cursorId = options.cursorId || null;
+                    this.init();
+                }
+                
+                init() {
+                    this.currentText = "";
+                    this.index = 0;
+                    this.isDeleting = false;
+                    this.type();
+                    
+                    if (this.loopInterval) {
+                        setInterval(() => this.resetAndType(), this.loopInterval);
+                    }
+                }
+                
+                type() {
+                    const cursor = this.cursorId ? document.getElementById(this.cursorId) : null;
+                    
+                    if (this.index < this.text.length) {
+                        this.currentText += this.text.charAt(this.index);
+                        this.index++;
+                        this.element.textContent = this.currentText;
+                        setTimeout(() => this.type(), this.speed);
+                    } else if (cursor) {
+                        cursor.remove();
+                    }
+                }
+                
+                resetAndType() {
+                    this.currentText = "";
+                    this.index = 0;
+                    this.element.textContent = "";
+                    
+                    if (this.cursorId) {
+                        const cursor = document.getElementById(this.cursorId);
+                        if (!cursor) {
+                            const newCursor = document.createElement('span');
+                            newCursor.id = this.cursorId;
+                            newCursor.className = 'ml-1 h-8 w-1 bg-purple-600 animate-blink';
+                            this.element.parentNode.insertBefore(newCursor, this.element.nextSibling);
+                        }
+                    }
+                    
+                    this.type();
+                }
+            }
+        
+            // Uso: Se ejecuta solo al cargar (para ejecutar cada 3 minutos, cambiar a: new TypeWriter(..., {loopInterval: 180000}))
+            document.addEventListener('DOMContentLoaded', () => {
+                new TypeWriter('typing-title', 'Login With Technology', {
+                    speed: 150,
+                    cursorId: 'typing-cursor'
+                });
+            });
+        </script>
+        
+        <style>
+            @keyframes blink {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0; }
+            }
+            .animate-blink {
+                animation: blink 0.7s infinite;
+            }
+        </style>
+        <!-- Script optimizado -->
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const titleElement = document.getElementById('typing-title');
+                const cursorElement = document.getElementById('typing-cursor');
+                const fullText = "Login With Technology";
+                let currentText = "";
+                let i = 0;
+                let isDeleting = false;
+                let typingSpeed = 500;
+        
+                const type = () => {
+                    if (i < fullText.length && !isDeleting) {
+                        currentText = fullText.substring(0, i + 1);
+                        i++;
+                        typingSpeed = Math.random() * 250 + 150;
+                    } else {
+                        isDeleting = true;
+                        currentText = currentText.substring(0, currentText.length - 1);
+                        typingSpeed = 50;
+                        if (currentText === "") {
+                            isDeleting = false;
+                            i = 0;
+                        }
+                    }
+        
+                    titleElement.textContent = currentText;
+                    setTimeout(type, typingSpeed);
+                };
+        
+                setTimeout(type, 500);
+            });
+        </script>
+        
+        <!-- Estilos CSS -->
+        <style>
+            .animate-fade-in {
+                animation: fadeIn 0.8s ease-out forwards;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes blink {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0; }
+            }
+            .animate-blink {
+                animation: blink 0.7s infinite;
+            }
+        </style>
 
         <br>
-        <section id="servicios" class="bg-white bg-opacity-80 p-6 rounded-md shadow-lg mt-8">
-          <h1 class="text-wheat font-size: 32px; text-center mb-4" style="size: 32;">Servicios</h1>
+        <section id="servicios" class="bg-white bg-opacity-90 p-6 rounded-lg shadow-md mt-8">
+            <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Servicios</h1>
+          
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Tarjeta 1 - Desarrollo Web -->
+                <div class="bg-white border border-gray-200 rounded-lg shadow hover:shadow-md transition-shadow">
+                    <img class="w-full h-48 object-cover rounded-t-lg" src="web-development.jpg" alt="Desarrollo web" />
+                    <div class="p-5">
+                        <h3 class="mb-3 text-xl font-bold text-gray-800">Desarrollo de Páginas Web</h3>
+                        <ul class="mb-4 space-y-2 text-gray-600">
+                            <li class="flex items-start">
+                                <svg class="w-4 h-4 mt-1 mr-2 text-purple-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Sitios web para negocios</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-4 h-4 mt-1 mr-2 text-purple-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Tiendas en línea</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-4 h-4 mt-1 mr-2 text-purple-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Páginas corporativas</span>
+                            </li>
+                        </ul>
+                        <a href="Redes.html" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors">
+                            Ver más
+                            <svg class="w-3.5 h-3.5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+        
+                <!-- Tarjeta 2 - Redes -->
+                <div class="bg-white border border-gray-200 rounded-lg shadow hover:shadow-md transition-shadow">
+                    <img class="w-full h-48 object-cover rounded-t-lg" src="network.jpeg" alt="Redes empresariales" />
+                    <div class="p-5">
+                        <h3 class="mb-3 text-xl font-bold text-gray-800">Redes Empresariales</h3>
+                        <ul class="mb-4 space-y-2 text-gray-600">
+                            <li class="flex items-start">
+                                <svg class="w-4 h-4 mt-1 mr-2 text-purple-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Seguridad y cámaras IP</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-4 h-4 mt-1 mr-2 text-purple-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Infraestructura WLAN</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-4 h-4 mt-1 mr-2 text-purple-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Diseño de redes</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors">
+                            Ver más
+                            <svg class="w-3.5 h-3.5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+        
+                <!-- Tarjeta 3 - Soporte Técnico (ejemplo adicional) -->
+                <div class="bg-white border border-gray-200 rounded-lg shadow hover:shadow-md transition-shadow">
+                    <img class="w-full h-48 object-cover rounded-t-lg" src="support.jpg" alt="Soporte técnico" />
+                    <div class="p-5">
+                        <h3 class="mb-3 text-xl font-bold text-gray-800">Soporte Técnico</h3>
+                        <ul class="mb-4 space-y-2 text-gray-600">
+                            <li class="flex items-start">
+                                <svg class="w-4 h-4 mt-1 mr-2 text-purple-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Mantenimiento preventivo</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-4 h-4 mt-1 mr-2 text-purple-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Solución de problemas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-4 h-4 mt-1 mr-2 text-purple-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Asesoría especializada</span>
+                            </li>
+                        </ul>
+                        <a href="#contacto" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors">
+                            Cotizar
+                            <svg class="w-3.5 h-3.5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
       
-          <div class="flex flex-wrap justify-center gap-4"> <!-- Contenedor flex para alinear las tarjetas -->
-              <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                  <a href="#">
-                      <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
-                  </a>
-                  <div class="p-5">
-                      <a href="#">
-                          <h5 id="WEB"class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Proyectos de Paginas Web</h5>
-                      </a>
-                      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Somos Creadores de Páginas Web para su negocio</p>
-                      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Ventas</p>
-                      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Viajes</p>
-                      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Hocio y más</p>
-                      <a  href="Redes.html" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                          Ver
-                          <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                          </svg>
-                      </a>
+
+
+
+        <section class="relative py-8 overflow-hidden">
+            <!-- Título -->
+            <div class="text-center mb-8">
+              <h2 class="text-3xl font-bold text-white">Equipo</h2>
+            </div>
+          
+            <!-- Slider Container -->
+            <div class="relative w-full max-w-4xl mx-auto">
+              <!-- Slider -->
+              <div id="sliderContainer" class="flex transition-transform duration-300 ease-in-out gap-4 px-4">
+                <!-- Tarjeta 1 -->
+                <div class="slider-item flex-shrink-0 w-72">
+                  <div class="card-container perspective-1000">
+                    <div class="card relative w-full h-96 transition-transform duration-500 transform-style-preserve-3d">
+                      <div class="card-face absolute w-full h-full backface-hidden bg-cover bg-center rounded-lg" 
+                           style="background-image: url('CAR.png');"></div>
+                      <div class="card-face absolute w-full h-full backface-hidden bg-white rounded-lg p-6 transform-rotate-y-180 backface-hidden overflow-y-auto">
+                        <h3 class="text-xl font-bold mb-2">Redes y Soporte Técnico</h3>
+                        <p class="text-gray-700 mb-4">Carlos </p>
+                        
+                        
+                        <div class="mb-3">
+                          <p class="text-sm text-gray-600 mb-1">Contacto</p>
+                          <p class="text-sm text-gray-600 mb-1">+506 7025 1259</p>
+                          
+                         
+                        </div>
+                      </div>
+                    </div>
                   </div>
-              </div>
-    
-        
-              
-              
-              <!-- Puedes agregar más tarjetas aquí -->
-
-              <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <a href="#">
-                    <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
-                </a>
-                <div class="p-5">
-                    <a href="#">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Proyectos de Redes y Conecciones </h5>
-                    </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Desea seguridad para su empresa, instalar cámara crear soporte en su red Empresarial.</p>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Camaras IP ,WLAN y más.</p>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Diseño de Estructuras de redes.</p>
-                    <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        Ver
-                        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                        </svg>
-                    </a>
                 </div>
-            </div>
-          </div>
-      </section>
-      
-
-
-
-      <section class="slider">
-        <div class="title-overlay">
-            <h2>Equipo</h2>
-        </div>
-        <style>
-            .title-overlay h2 {
-            margin: 0;
-            color: white; /* Color del texto */
-            font-family: Arial, sans-serif; /* Tipo de letra */
-            font-size: 32px; /* Tamaño de la fuente */
-            font-weight: bold; /* Negrita */
-            text-align: center; /* Centrado del texto */
-            padding: 10px 0; /* Espaciado alrededor del título */
-        }
-
-        </style>
-        
-        
-        
-        <div class="slider-container" id="sliderContainer">
-            <div class="slider-item">
-                <div class="card-container">
-                    <div class="card">
-                        <div class="card-face card-front" style="background-image: url('sliderDeadPool.jpg');"></div>
-                        <div class="card-face card-back">
-                            <h2>Redes</h2>
-                            <p>Carlos</p>
-                            <p>WLAN</p>
-                            <div class="progress-bar-container">
-                                <div class="progress-bar" style="width: 90%;">90%</div> <!-- Barra de HTML -->
-                            </div>
-                            
-                            <p>IP Config</p>
-                            <div class="progress-bar-container">
-                                <div class="progress-bar" style="width: 85%;">85%</div> <!-- Barra de JS -->
-                            </div>
-                            
-                            <p>CAMARAS</p>
-                            <div class="progress-bar-container">
-                                <div class="progress-bar" style="width: 75%;">75%</div> <!-- Barra de React -->
-                            </div>
-                            
+          
+                <!-- Tarjeta 2 -->
+                <div class="slider-item flex-shrink-0 w-72">
+                  <div class="card-container perspective-1000">
+                    <div class="card relative w-full h-96 transition-transform duration-500 transform-style-preserve-3d">
+                      <div class="card-face absolute w-full h-full backface-hidden bg-cover bg-center rounded-lg" 
+                           style="background-image: url('DAV.png');"></div>
+                      <div class="card-face absolute w-full h-full backface-hidden bg-white rounded-lg p-6 transform-rotate-y-180 backface-hidden overflow-y-auto">
+                        <h3 class="text-xl font-bold mb-2">Infraestructura y Soporte</h3>
+                        <p class="text-gray-700 mb-4">David</p>
+                        
+                        <div class="mb-3">
+                          <p class="text-sm text-gray-600 mb-1">Contacto</p>
+                          <p class="text-sm text-gray-600 mb-1">+506 7198 2836</p>
                         </div>
+                        
+                
+    
+                      </div>
                     </div>
+                  </div>
                 </div>
-            </div>
+          
+                <!-- Tarjeta 3 -->
+                <div class="slider-item flex-shrink-0 w-72">
+                  <div class="card-container perspective-1000">
+                    <div class="card relative w-full h-96 transition-transform duration-500 transform-style-preserve-3d">
+                      <div class="card-face absolute w-full h-full backface-hidden bg-cover bg-center rounded-lg" 
+                           style="background-image: url('zz.png');"></div>
+                      <div class="card-face absolute w-full h-full backface-hidden bg-white rounded-lg p-6 transform-rotate-y-180 backface-hidden overflow-y-auto">
+                        <h3 class="text-xl font-bold mb-2">Desarrollo Web y Soporte Técnico</h3>
+                        <p class="text-gray-700 mb-4">José Zamora</p>
+                        
+                        <div class="mb-3">
+                          <p class="text-sm text-gray-600 mb-1">Contacto</p>
+                          
+                          <span class="text-xs text-gray-500">+506 70549621</span>
+                        </div>
+                        
+                        
             
-            <div class="slider-item">
-                <div class="card-container">
-                    <div class="card">
-                        <div class="card-face card-front" style="background-image: url('sliderIronman.jpg');"></div>
-                        <div class="card-face card-back">
-                            <h2>Infra estructura </h2>
-                            <p>David</p>
-                            <p>Structura </p>
-                            <div class="progress-bar-container">
-                                <div class="progress-bar" style="width: 90%;">90%</div> <!-- Barra de HTML -->
-                            </div>
-                            
-                            <p>Parte Técnica</p>
-                            <div class="progress-bar-container">
-                                <div class="progress-bar" style="width: 85%;">85%</div> <!-- Barra de JS -->
-                            </div>
-                            
-                            <p>Calidad </p>
-                            <div class="progress-bar-container">
-                                <div class="progress-bar" style="width: 75%;">75%</div> <!-- Barra de React -->
-                            </div>
-                            
-                            
-                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
+              </div>
+          
+              <!-- Controles -->
+              <button id="prev" class="absolute left-0 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:bg-opacity-100 transition-all z-10">
+                &larr;
+              </button>
+              <button id="next" class="absolute right-0 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 rounded-full w-10 h-10 flex items-center justify-center shadow-md hover:bg-opacity-100 transition-all z-10">
+                &rarr;
+              </button>
             </div>
-            <div class="slider-item">
-                <div class="card-container">
-                    <div class="card">
-                        <div class="card-face card-front" style="background-image: url('sliderSpider.jpg');"></div>
-                        <div class="card-face card-back">
-                            <h2>WEB</h2>
-
-                        <p>José Zamora</p>
-                            <p>HTML</p>
-                            <div class="progress-bar-container">
-                                <div class="progress-bar" style="width: 90%;">90%</div> <!-- Barra de HTML -->
-                            </div>
-                            
-                            <p>JS</p>
-                            <div class="progress-bar-container">
-                                <div class="progress-bar" style="width: 85%;">85%</div> <!-- Barra de JS -->
-                            </div>
-                            
-                            <p>React</p>
-                            <div class="progress-bar-container">
-                                <div class="progress-bar" style="width: 75%;">75%</div> <!-- Barra de React -->
-                            </div>
-                            
-                            <p>Habilidad: Regeneración</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="controls">
-            <button id="prev">⟵</button>
-            <button id="next">⟶</button>
-        </div>
-    </section>
-    
-
-    <script>
-        const sliderContainer = document.getElementById('sliderContainer');
-const sliderItems = document.querySelectorAll('.slider-item');
-const prevButton = document.getElementById('prev');
-const nextButton = document.getElementById('next');
-
-let currentIndex = 0;
-
-// Ajustar el ancho total del contenedor al inicio
-function initializeSlider() {
-    const totalWidth = sliderItems.length * (sliderItems[0].offsetWidth + 16); // Incluye el gap
-    sliderContainer.style.width = `${totalWidth}px`;
-}
-
-// Función para mover el slider
-function updateSlider() {
-    const offset = -(currentIndex * (sliderItems[0].offsetWidth + 16)); // Incluye el gap
-    sliderContainer.style.transform = `translateX(${offset}px)`;
-}
-
-// Botón anterior
-prevButton.addEventListener('click', () => {
-    currentIndex = (currentIndex > 0) ? currentIndex - 1 : sliderItems.length - 1;
-    updateSlider();
-});
-
-// Botón siguiente
-nextButton.addEventListener('click', () => {
-    currentIndex = (currentIndex < sliderItems.length - 1) ? currentIndex + 1 : 0;
-    updateSlider();
-});
-
-// Efecto de giro en las cartas
-document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('click', () => {
-        card.classList.toggle('is-flipped');
-    });
-});
-
-// Inicializar el slider después de cargar
-window.addEventListener('load', initializeSlider);
-
-    </script>
+          </section>
+          
+          <style>
+            .perspective-1000 {
+              perspective: 1000px;
+            }
+            .transform-style-preserve-3d {
+              transform-style: preserve-3d;
+            }
+            .card-face {
+              backface-visibility: hidden;
+            }
+            .transform-rotate-y-180 {
+              transform: rotateY(180deg);
+            }
+            .is-flipped {
+              transform: rotateY(180deg);
+            }
+          </style>
+          
+          <script>
+            document.addEventListener('DOMContentLoaded', () => {
+              const sliderContainer = document.getElementById('sliderContainer');
+              const sliderItems = document.querySelectorAll('.slider-item');
+              const prevBtn = document.getElementById('prev');
+              const nextBtn = document.getElementById('next');
+              let currentIndex = 0;
+              const itemWidth = sliderItems[0].offsetWidth + 16; // Ancho + gap
+          
+              // Inicializar slider
+              function initSlider() {
+                sliderContainer.style.width = `${sliderItems.length * itemWidth}px`;
+              }
+          
+              // Mover slider
+              function moveSlider() {
+                sliderContainer.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+              }
+          
+              // Event listeners
+              prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : sliderItems.length - 1;
+                moveSlider();
+              });
+          
+              nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex < sliderItems.length - 1) ? currentIndex + 1 : 0;
+                moveSlider();
+              });
+          
+              // Flip cards
+              document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('click', () => {
+                  card.classList.toggle('is-flipped');
+                });
+              });
+          
+              // Inicializar
+              initSlider();
+              window.addEventListener('resize', initSlider);
+            });
+          </script>
 
         
 
@@ -342,10 +593,59 @@ window.addEventListener('load', initializeSlider);
           </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="bg-gray-800 text-white p-4 text-center mt-8">
-            <p>© 2024 LWT CONNECTION. Todos los derechos reservados.</p>
-        </footer>
+       <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <img src="LOGOFINISH.png" alt="LWT Connection" class="h-16 w-auto mb-4">
+                    <p class="text-gray-400">Soluciones tecnológicas integrales para tu negocio.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Servicios</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Desarrollo Web</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Redes Empresariales</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Seguridad Electrónica</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Compañía</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#nosotros" class="text-gray-400 hover:text-white transition">Nosotros</a></li>
+                        
+                        <li><a href="index.html#contacto" class="text-gray-400 hover:text-white transition">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contacto</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt mr-2 text-gray-400"></i> Costa Rica</li>
+                        <li class="flex items-center"><i class="fas fa-phone mr-2 text-gray-400"></i> +50670549621</li>
+                        <li class="flex items-center"><i class="fas fa-envelope mr-2 text-gray-400"></i> lwtconnection@outlook.com/li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400">© 2025 LWT Connection. Todos los derechos reservados.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                     <li>
+                        <a href="https://www.facebook.com/profile.php?id=61572983594359" 
+                           class="text-blue-600 hover:text-blue-800"
+                           onclick="return confirmNavigation(event)">
+                          <i class="fab fa-facebook"></i>
+                        </a>
+                      </li>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
     </main>
 
     <!-- Script for mobile menu toggle -->
